@@ -2,6 +2,10 @@ package leetcode.editor.cn;
 
 import leetcode.editor.structure.ListNode;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class L142LinkedListCycleIi{
     //给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
 //
@@ -74,7 +78,33 @@ public class L142LinkedListCycleIi{
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
+        //1.
+//        Set<ListNode> set = new HashSet<>();
+//        while (head != null) {
+//            if (!set.add(head)){
+//                return head;
+//            }
+//            head = head.next;
+//        }
+//        return null;
+        //2.双指针
+        //通过就算可得结论：
+//        走a+nb步一定是在环入口
+//        第一次相遇时慢指针已经走了nb步
 
+        ListNode fast = head, slow = head;
+        while (true) {
+            if (fast==null||fast.next==null) return null;
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast==slow) break;
+        }
+        fast = head;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
