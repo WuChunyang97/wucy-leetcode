@@ -1,4 +1,4 @@
-package leetcode.editor.cn;
+package leetcode.editor.cn.classify.tree;
 
 import leetcode.editor.structure.Node;
 

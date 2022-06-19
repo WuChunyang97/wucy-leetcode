@@ -1,4 +1,4 @@
-package leetcode.editor.cn;
+package leetcode.editor.cn.classify.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package leetcode.editor.cn;
+package leetcode.editor.cn.classify.list;
 
 import leetcode.editor.structure.ListNode;
 
