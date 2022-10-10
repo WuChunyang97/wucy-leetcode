@@ -43,17 +43,15 @@ public class ClimbingStairs{
 class Solution {
     public int climbStairs(int n) {
         if (n<=2) return n;
-        int[] dp = new int[n+1];
-        //dp[1] = 1，dp[2] = 2，这个初始化也是可以的
-        dp[0] = 1;
-        dp[1] = 2;
-        int temp = 0;
-        for (int i = 2; i <= n; i++) {
-            temp = dp[0] + dp[1];
-            dp[0] = dp[1];
+        int[] dp =new int[2];
+        dp[0]=1;
+        dp[1]=2;
+        for (int i = 2; i < n; i++) {
+            int temp = dp[0] + dp[1];
+            dp[0]=dp[1];
             dp[1] = temp;
         }
-        return dp[0];
+        return dp[1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

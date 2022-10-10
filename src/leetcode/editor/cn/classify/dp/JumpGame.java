@@ -1,4 +1,4 @@
-package leetcode.editor.cn;
+package leetcode.editor.cn.classify.dp;
 //给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
 //
 // 数组中的每个元素代表你在该位置可以跳跃的最大长度。 
@@ -42,15 +42,29 @@ public class JumpGame{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean canJump(int[] nums) {
-        //如果能到达某个位置，那一定能到达它前面的所有位置。
+/*        //如果能到达某个位置，那一定能到达它前面的所有位置。
         int k = 0, n = nums.length;
         for (int i = 0; i < n; i++) {
-            if (k<i) return false;
+            if (k<i) return false;//先检验
             k=Math.max(k,i+nums[i]);
             if (n-1<=k) return true;
         }
-        return true;
-
+        return true;*/
+        int n = nums.length;
+        boolean[] dp = new boolean[n];
+        dp[0]=true;
+        for (int i = 0; i < n; i++) {
+            if (dp[i]){
+                int distance=i+nums[i];
+                if (distance>=n-1) return true;
+                for (int j = i+1; j <= distance; j++) {
+                    dp[j] = true;
+                }
+            }else {
+                return false;
+            }
+        }
+        return dp[n - 1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
